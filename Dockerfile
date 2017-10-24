@@ -1,4 +1,4 @@
-FROM resin/raspberrypi2-debian
+FROM resin/raspberrypi3-debian
 MAINTAINER justin@dray.be
 
 # Let's start with some basic stuff.
