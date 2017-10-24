@@ -1,5 +1,5 @@
-FROM alpine:3.3
-MAINTAINER @VITIMan 
+FROM resin/raspberrypi3-alpine
+MAINTAINER @jstnn 
 
 # docker run -p 8080:8080 --net music_stack --name=ympd -d alpine-ympd:dev
 

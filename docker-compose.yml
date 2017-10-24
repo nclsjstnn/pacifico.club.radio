@@ -1,8 +1,23 @@
 version: '2'
 
 services:
+  ftpd_server:
+    build: ./pure-ftpd
+    ports:
+      - "6600:6600"
+      - "21:21"
+      - "30000-30009:30000-30009"
+    # depends_on:
+    #   - icecast
+    networks:
+      - music_stack
+    # volumes:
+    #   - /data/music:/var/lib/mpd/music
+    #   - /data/playlists:/var/lib/mpd/playlists
+    #   - /data/database:/var/lib/mpd/database
+
   icecast:
-    image: vitiman/alpine-icecast:latest
+    build: ./icecast
     ports:
       - "8000:8000"
     networks:
@@ -10,7 +25,7 @@ services:
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
-    image: vitiman/alpine-mpd:latest
+    build: ./mpd
     ports:
       - "6600:6600"
     depends_on:
@@ -18,19 +33,20 @@ services:
     networks:
       - music_stack
     volumes:
-      - /path/to/mpd_music:/var/lib/mpd/music
-      - /path/to/mpd_playlists:/var/lib/mpd/playlists
-      - /path/to/mpd_database:/var/lib/mpd/database
+      - /data/music:/var/lib/mpd/music
+      - /data/playlists:/var/lib/mpd/playlists
+      - /data/database:/var/lib/mpd/database
 
   sima:
-    image: vitiman/alpine-sima:latest
+    build: ./sima
     depends_on:
       - mpd
     networks:
       - music_stack
 
   ympd:
-    image: vitiman/alpine-ympd:latest
+    # image: vitiman/alpine-ympd:latest
+    build: ./ympd
     ports:
       - "8080:8080"
     depends_on:
@@ -43,12 +59,12 @@ networks:
     driver: bridge
 
 # If you use your own volumes instead host volumes, uncomment this section
-# volumes:
-#   mpd_music:
-#     external: true
-#   mpd_playlists:
-#     external: true
-#   mpd_database:
-#     external: true
+volumes:
+  mpd_music:
+    external: true
+  mpd_playlists:
+    external: true
+  mpd_database:
+    external: true
 
 

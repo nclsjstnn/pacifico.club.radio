@@ -1,5 +1,5 @@
-FROM alpine:3.3
-MAINTAINER @VITIMan https://github.com/VITIMan 
+FROM resin/raspberrypi3-alpine
+MAINTAINER @jstnn
 
 ENV ICECAST_VERSION 2.4.2-r1
 

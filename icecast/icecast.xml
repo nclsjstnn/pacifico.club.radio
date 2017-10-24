@@ -34,7 +34,7 @@
 
         <!-- Admin logs in with the username given below -->
         <admin-user>admin</admin-user>
-        <admin-password>hackme</admin-password>
+        <admin-password>radiosativa</admin-password>
     </authentication>
 
     <!-- set the mountpoint for a shoutcast source to use, the default if not
@@ -42,6 +42,10 @@
          wanted or an extension is required
     <shoutcast-mount>/live.nsv</shoutcast-mount>
     -->
+
+    <mount>
+        <mount-name>/mpd.mp3</mount-name>
+    </mount>
 
     <!-- Uncomment this if you want directory listings -->
     <!--

@@ -1,5 +1,5 @@
-FROM alpine:3.3
-MAINTAINER @VITIMan https://github.com/VITIMan 
+FROM resin/raspberrypi3-alpine
+MAINTAINER @jstnn
 
 ENV MPD_VERSION 0.19.12-r0
 ENV MPC_VERSION 0.27-r0
