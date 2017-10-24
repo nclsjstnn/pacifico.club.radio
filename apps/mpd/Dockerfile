@@ -1,8 +1,8 @@
 FROM resin/raspberrypi3-alpine
 MAINTAINER @jstnn
 
-ENV MPD_VERSION 0.19.12-r0
-ENV MPC_VERSION 0.27-r0
+ENV MPD_VERSION 0.20.8-r0
+ENV MPC_VERSION 0.28-r0
 
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
