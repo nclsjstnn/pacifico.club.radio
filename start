@@ -1,0 +1,31 @@
+#!/bin/bash -xe
+containers=$(find * -maxdepth 0 -type d)
+
+keep_alive() {
+	if [[ $(docker-compose ps 2>&1 | tail -n+3 | grep -v Up | wc -l) -ne 0 ]]; then
+		echo "A container has exited. Restarting docker stack."
+		docker-compose down
+		docker-compose up &
+	fi
+}
+
+mount -o bind /data /var/lib/docker
+
+# Start docker and services
+if ! docker info &>/dev/null; then
+	wrapdocker echo
+fi
+
+for i in $containers; do
+	docker-compose build $i
+done
+docker rm -v $(docker ps -a -q -f status=exited 2>/dev/null) &>/dev/null || :
+docker rmi $(docker images -f "dangling=true" -q 2>/dev/null) &>/dev/null || :
+docker-compose down || :
+docker-compose up &
+
+set +x
+while true; do
+	sleep 5m
+	keep_alive
+done
