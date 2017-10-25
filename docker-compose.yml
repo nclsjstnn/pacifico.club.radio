@@ -41,7 +41,6 @@ services:
       - music_stack
 
   ympd:
-    # image: vitiman/alpine-ympd:latest
     build: ./ympd
     ports:
       - "8080:8080"

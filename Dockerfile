@@ -1,3 +1,3 @@
-FROM resin/raspberrypi-python:2.7
+FROM resin/raspberrypi3-debian
 ADD . /usr/src/app
 WORKDIR /usr/src/app
