@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-alpine
+FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
 ENV MPD_VERSION 0.20.8-r0

@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-alpine
+FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
 ENV ICECAST_VERSION 2.4.3-r4

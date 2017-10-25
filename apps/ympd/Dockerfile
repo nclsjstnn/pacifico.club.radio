@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-alpine
+FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn 
 
 # docker run -p 8080:8080 --net music_stack --name=ympd -d alpine-ympd:dev

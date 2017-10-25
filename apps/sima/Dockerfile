@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-alpine
+FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
 ENV SIMA_VERSION 0.14.4
