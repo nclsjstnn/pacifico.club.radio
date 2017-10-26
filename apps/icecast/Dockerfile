@@ -1,7 +1,7 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/raspberrypi3-alpine-python
 MAINTAINER @jstnn
 
-ENV ICECAST_VERSION 2.4.3-r4
+ENV ICECAST_VERSION 2.4.3-r3
 
 # https://docs.docker.com/engine/reference/builder/#arg
 # docker run -p 8000:8000 --net music_stack --name=icecast -d alpine-icecast:dev

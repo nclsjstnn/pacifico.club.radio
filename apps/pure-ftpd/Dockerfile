@@ -1,5 +1,5 @@
 
-FROM resin/raspberrypi3-debian
+FROM resin/raspberrypi3-debian:jessie
 
 # feel free to change this ;)
 MAINTAINER @jstnn

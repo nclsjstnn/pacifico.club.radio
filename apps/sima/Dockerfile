@@ -1,8 +1,8 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/raspberrypi3-alpine-python
 MAINTAINER @jstnn
 
 ENV SIMA_VERSION 0.14.4
-ENV PYTHON_VERSION 3.6.1-r3
+ENV PYTHON_VERSION 3.5.2-r10
 
 RUN apk -q update \
     && apk -q --no-progress add python3="$PYTHON_VERSION" \

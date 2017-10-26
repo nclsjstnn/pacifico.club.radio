@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/raspberrypi3-alpine-python
 MAINTAINER @jstnn 
 
 # docker run -p 8080:8080 --net music_stack --name=ympd -d alpine-ympd:dev
@@ -14,8 +14,11 @@ RUN apk -q update \
     && apk -q --no-progress add gcc \
     && apk -q --no-progress add g++ \
     && apk -q --no-progress add libmpdclient-dev \
-    && apk -q --no-progress add openssl-dev \
-    && apk -q --no-progress add make
+    && apk -q --no-progress add make \
+    && apk -q --no-progress add zlib \
+    && apk -q --no-progress add zlib-dev \
+    && apk -q --no-progress add openssl \
+    && apk -q --no-progress add openssl-dev
 
 
 RUN curl -fsSlL https://github.com/notandy/ympd/archive/v$YMPD_VERSION.tar.gz -o ympd.tar.gz \
