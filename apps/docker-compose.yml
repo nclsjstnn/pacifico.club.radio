@@ -38,10 +38,6 @@ services:
     networks:
       - music_stack
 
-networks:
-  music_stack:
-    driver: bridge
-
   # ftpd_server:
   #   build: ./pure-ftpd
   #   ports:
@@ -52,6 +48,10 @@ networks:
   #   #   - icecast
   #   networks:
   #     - music_stack
+
+networks:
+  music_stack:
+    driver: bridge
 
 # If you use your own volumes instead host volumes, uncomment this section
 volumes:

@@ -1,27 +1,33 @@
-FROM resin/raspberrypi3-alpine-python
+FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
-ENV ICECAST_VERSION 2.4.3-r3
+ENV DEBIAN_FRONTEND noninteractive
 
-# https://docs.docker.com/engine/reference/builder/#arg
-# docker run -p 8000:8000 --net music_stack --name=icecast -d alpine-icecast:dev
-ARG user=icecast
+ARG user=icecast2
 ARG group=icecast
-# ARG uid=1000
-# ARG gid=1000
 
-RUN apk -q update \
-    && apk -q --no-progress add icecast="$ICECAST_VERSION" \
-    && rm -rf /var/cache/apk/*
+#RUN groupadd -r ${group} && useradd --no-log-init -r -g ${user} ${group}
+RUN useradd -ms /bin/bash ${user} && groupadd ${group}
 
-COPY silence.ogg /usr/share/icecast/silence.ogg
-COPY icecast.xml /usr/share/icecast/icecast.xml
+RUN apt-get -qq -y update \
+    && apt-get -y install wget \
+    && wget -qO - http://icecast.org/multimedia-obs.key | sudo apt-key add -
+    
+RUN echo "deb http://download.opensuse.org/repositories/multimedia:/xiph/Debian_8.0/ ./" > /etc/apt/sources.list.d/icecast.list
+
+RUN apt-get -qq -y update \
+    && apt-get -qq -y install icecast2 \
+    && apt-get -qq -y install python-setuptools \
+    && apt-get clean
+
+COPY silence.ogg /usr/share/icecast2/silence.ogg
+COPY icecast.xml /usr/share/icecast2/icecast.xml
 
 RUN mkdir -p /var/log/icecast \
-    && chown -R ${user}:${group} /usr/share/icecast \
+    && chown -R ${user}:${group} /usr/share/icecast2 \
     && chown -R ${user}:${group} /var/log/icecast
 
 EXPOSE 8000
 
 USER ${user}
-CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
+CMD ["icecast2", "-c", "/usr/share/icecast2/icecast.xml"]

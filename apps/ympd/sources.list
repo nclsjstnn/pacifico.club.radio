@@ -1,0 +1,5 @@
+deb http://ftp.fr.debian.org/debian/ testing main
+deb http://ftp.fr.debian.org/debian/ testing-updates main
+deb http://security.debian.org jessie/updates main
+
+

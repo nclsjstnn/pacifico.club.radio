@@ -1,39 +1,21 @@
-FROM resin/raspberrypi3-alpine-python
+FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn 
 
 # docker run -p 8080:8080 --net music_stack --name=ympd -d alpine-ympd:dev
 
 ENV YMPD_VERSION 1.3.0
 
-ENV LIBMPDCLIENT_INCLUDE_DIR /usr/lib/libmpdclient.so.2
+RUN chmod o+r /etc/resolv.conf
 
-RUN apk -q update \
-    && apk -q --no-progress add curl \
-    && apk -q --no-progress add cmake \
-    && apk -q --no-progress add libmpdclient \
-    && apk -q --no-progress add gcc \
-    && apk -q --no-progress add g++ \
-    && apk -q --no-progress add libmpdclient-dev \
-    && apk -q --no-progress add make \
-    && apk -q --no-progress add zlib \
-    && apk -q --no-progress add zlib-dev \
-    && apk -q --no-progress add openssl \
-    && apk -q --no-progress add openssl-dev
+ADD sources.list /etc/apt/
 
+RUN apt-get -qq -y update \
+    && apt-get install -y -q build-essential cmake libmpdclient-dev libmpdclient2 openssl libssl-dev \ 
+    && apt-get clean
 
-RUN curl -fsSlL https://github.com/notandy/ympd/archive/v$YMPD_VERSION.tar.gz -o ympd.tar.gz \
-    && tar -xzf ympd.tar.gz \
-    && mkdir ympd-$YMPD_VERSION/build
-
-WORKDIR ympd-$YMPD_VERSION/build
-
-RUN cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    && make \
-    && make install 
-
-RUN apk -q --no-progress del cmake gcc g++ openssl-dev libmpdclient-dev curl \
-    && rm -rf /var/cache/apk/*
+RUN curl -fsSlL https://www.ympd.org/downloads/ympd-1.2.3-armhf.tar.bz2 -o ympd.tar.bz2 \
+    && tar -xvf ympd.tar.bz2
  
 EXPOSE 8080
 
-CMD ["ympd", "-h", "mpd", "-p", "6600", "-w", "8080"]
+CMD ["./ympd", "-h", "mpd", "-p", "6600", "-w", "8080"]

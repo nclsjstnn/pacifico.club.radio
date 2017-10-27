@@ -1,16 +1,17 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/raspberrypi3-alpine-python
 MAINTAINER @jstnn
+
+ENV MPD_VERSION 0.19.21-r0
+ENV MPC_VERSION 0.28-r0
 
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
 ARG group=audio
 
-RUN useradd -ms /bin/bash ${user}
-
-RUN apt-get -qq -y update  \
-    && apt-get -qq -y install mpd \
-    && apt-get -qq -y install mpc \
-    && apt-get clean
+RUN apk -q update \
+    && apk -q --no-progress add mpd="$MPD_VERSION" \
+    && apk -q --no-progress add mpc="$MPC_VERSION" \
+    && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /var/lib/mpd/music \
     && mkdir -p /var/lib/mpd/playlists \
@@ -26,5 +27,4 @@ COPY mpd.conf /etc/mpd.conf
 # Entry point for mpc update and stuff
 EXPOSE 6600
 
-USER ${user}
 CMD ["mpd", "--stdout", "--no-daemon"]
