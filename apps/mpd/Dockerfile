@@ -5,7 +5,7 @@ MAINTAINER @jstnn
 ARG user=mpd
 ARG group=audio
 
-RUN useradd -ms /bin/bash ${user} && groupadd ${group}
+RUN useradd -ms /bin/bash ${user}
 
 RUN apt-get -qq -y update  \
     && apt-get -qq -y install mpd \
