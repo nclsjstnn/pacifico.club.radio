@@ -38,16 +38,16 @@ services:
     networks:
       - music_stack
 
-  # ftpd_server:
-  #   build: ./pure-ftpd
-  #   ports:
-  #     - "6600:6600"
-  #     - "21:21"
-  #     - "30000-30009:30000-30009"
-  #   # depends_on:
-  #   #   - icecast
-  #   networks:
-  #     - music_stack
+  ftpd_server:
+    build: ./pure-ftpd
+    ports:
+      - "6600:6600"
+      - "21:21"
+      - "30000-30009:30000-30009"
+    # depends_on:
+    #   - icecast
+    networks:
+      - music_stack
 
 networks:
   music_stack:
