@@ -18,9 +18,9 @@ services:
     networks:
       - music_stack
     volumes:
-      - /data/music:/var/lib/mpd/music
-      - /data/playlists:/var/lib/mpd/playlists
-      - /data/database:/var/lib/mpd/database
+      - /data/radio/music:/var/lib/mpd/music
+      - /data/radio/playlists:/var/lib/mpd/playlists
+      - /data/radio/database:/var/lib/mpd/database
 
   sima:
     build: ./sima
@@ -35,17 +35,6 @@ services:
       - "8080:8080"
     depends_on:
       - mpd
-    networks:
-      - music_stack
-
-  pure-ftpd:
-    build: ./pure-ftpd
-    ports:
-      - "6600:6600"
-      - "21:21"
-      - "30000-30009:30000-30009"
-    # depends_on:
-    #   - icecast
     networks:
       - music_stack
 
