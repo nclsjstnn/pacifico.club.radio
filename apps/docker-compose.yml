@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     networks:
-      - music_stack
+      radio
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
@@ -16,7 +16,7 @@ services:
     depends_on:
       - icecast
     networks:
-      - music_stack
+      radio
     volumes:
       - /data/radio/music:/var/lib/mpd/music
       - /data/radio/playlists:/var/lib/mpd/playlists
@@ -27,7 +27,7 @@ services:
     depends_on:
       - mpd
     networks:
-      - music_stack
+      radio
 
   ympd:
     build: ./ympd
@@ -36,10 +36,10 @@ services:
     depends_on:
       - mpd
     networks:
-      - music_stack
+      radio
 
 networks:
-  music_stack:
+  radio:
     driver: bridge
 
 # If you use your own volumes instead host volumes, uncomment this section
