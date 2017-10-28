@@ -7,19 +7,24 @@ ARG group=audio
 
 RUN useradd -ms /bin/bash ${user}
 
-RUN apt-get -qq -y update && \
-    apt-get -qq -y install mpd mpc && \
-    apt-get clean
+RUN apt-get -qq -y update \
+    && apt-get -qq -y install wget \
+    && apt-get clean
+
+# Install mpd. We need the backports version because the default debian version crashes on certain characters when updating the DB
+# See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=768094
+RUN echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list \
+ && apt-get update && apt-get -y -t jessie-backports install mpd mpc
 
 RUN mkdir -p /var/lib/mpd/music \
     && mkdir -p /var/lib/mpd/playlists \
     && mkdir -p /var/lib/mpd/database \
     && mkdir -p /var/log/mpd/mpd.log \
-    && chown -R ${user}:mpd /var/lib/mpd \
-    && chown -R ${user}:mpd /var/log/mpd/mpd.log \
-    && chown -R ${user}:mpd /var/lib/mpd/music \
-    && chown -R ${user}:mpd /var/lib/mpd/playlists \
-    && chown -R ${user}:mpd /var/lib/mpd/database 
+    && chown -R ${user} /var/lib/mpd \
+    && chown -R ${user} /var/log/mpd/mpd.log \
+    && chown -R ${user} /var/lib/mpd/music \
+    && chown -R ${user} /var/lib/mpd/playlists \
+    && chown -R ${user} /var/lib/mpd/database 
 
 # Declare a music , playlists and database volume (state, tag_cache and sticker.sql)
 VOLUME ["/var/lib/mpd/music", "/var/lib/mpd/playlists", "/var/lib/mpd/database"]
