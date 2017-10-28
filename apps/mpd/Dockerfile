@@ -9,6 +9,8 @@ RUN useradd -ms /bin/bash ${user}
 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install wget \
+    && apt-get -qq -y install mpd \
+    && apt-get -qq -y install mpc \
     && apt-get clean
 
 # # Install mpd. We need the backports version because the default debian version crashes on certain characters when updating the DB
