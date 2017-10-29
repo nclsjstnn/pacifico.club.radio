@@ -43,12 +43,12 @@ networks:
     driver: bridge
 
 # If you use your own volumes instead host volumes, uncomment this section
-# volumes:
-#   mpd_music:
-#     external: true
-#   mpd_playlists:
-#     external: true
-#   mpd_database:
-#     external: true
+volumes:
+  mpd_music:
+    external: true
+  mpd_playlists:
+    external: true
+  mpd_database:
+    external: true
 
 
