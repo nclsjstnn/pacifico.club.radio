@@ -37,6 +37,16 @@ services:
       - mpd
     networks:
       - radio
+  
+  pureftpd:
+    build: ./pureftpd
+    ports:
+      - "21:21"
+    volumes:
+      - /data/radio/music:/home/ftpuser/sativo
+      - /data/pure-ftpd:/etc/pure-ftpd
+    privileged: true
+    restart: always
 
 networks:
   radio:
