@@ -22,11 +22,11 @@ RUN mkdir -p /var/lib/mpd/music \
     && mkdir -p /var/lib/mpd/playlists \
     && mkdir -p /var/lib/mpd/database \
     && mkdir -p /var/log/mpd/mpd.log \
-    && chown ${user}. /var/lib/mpd \
-    && chown ${user}. /var/log/mpd/mpd.log \
-    && chown ${user}. /var/lib/mpd/music \
-    && chown ${user}. /var/lib/mpd/playlists \
-    && chown ${user}. /var/lib/mpd/database 
+    && chown -R ${user} /var/lib/mpd \
+    && chown -R ${user} /var/log/mpd/mpd.log \
+    && chown -R ${user} /var/lib/mpd/music \
+    && chown -R ${user} /var/lib/mpd/playlists \
+    && chown -R ${user} /var/lib/mpd/database 
 
 RUN chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 
