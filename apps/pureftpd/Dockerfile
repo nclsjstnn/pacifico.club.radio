@@ -10,21 +10,19 @@ RUN apt-get -qq -y update \
     && groupadd ftpgroup \
     && useradd -g ftpgroup -m ftpuser
 
-RUN ( echo ${PASSWORD} ; echo ${PASSWORD} ) | pure-pw useradd ${USERID} -u ftpuser -g ftpgroup -d /home/ftpuser/${USERID} > /dev/null 2>&1 && pure-pw mkdb
-# RUN mkdir -p /home/ftpusers/${USERID}
-# RUN mkdir -p /etc/pure-ftpd
+RUN mkdir -p /home/ftpusers/${USERID}
 
 VOLUME ["/home/ftpusers/sativo", "/etc/pure-ftpd"]
 
-# RUN chown -R ftpuser /home/ftpusers/sativo
-# RUN chown -R ftpuser /etc/pure-ftpd
+RUN ( echo ${PASSWORD} ; echo ${PASSWORD} ) | pure-pw useradd ${USERID} -u ftpuser -g ftpgroup -d /home/ftpuser/${USERID} \
+    && pure-pw mkdb
 
-EXPOSE 21
-#CMD ["pure-ftpd", "--login", "puredb:/etc/pure-ftpd/pureftpd.pdb", "--createhomedir"]
-# CMD chown -R 1000 /home/ftpusers/${USERID} && /usr/sbin/pure-ftpd -c 50 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
-CMD chown -R 1000 /home/ftpusers/${USERID} && pure-ftpd --login puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R
+EXPOSE 21 30009
+CMD ["pure-ftpd", "--login", "puredb:/etc/pure-ftpd/pureftpd.pdb", "--createhomedir"]
+#CMD chown -R 1000 /home/ftpusers/${USERID} && pure-ftpd -c 50 -C 10 -l puredb:/etc/pureftpd.pdb --createhomedir
+#CMD pure-ftpd -l puredb:/etc/pureftpd.pdb -E -j -R
 
-# EXPOSE 21
+
 
 # CMD ["pure-ftpd", "--login", "puredb:/etc/pureftpd.pdb", "--createhomedir"]
 
