@@ -48,4 +48,5 @@ WORKDIR /apps
 ENV INITSYSTEM on
 
 ADD start /start
+RUN chmod +x /start
 CMD /start
