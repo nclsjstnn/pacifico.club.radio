@@ -5,8 +5,6 @@ MAINTAINER @jstnn
 ARG user=mpd
 ARG group=audio
 
-ADD sources.list /etc/apt/
-
 RUN useradd -ms /bin/bash ${user}
 
 RUN apt-get -qq -y update \
