@@ -3,7 +3,9 @@ MAINTAINER @jstnn
 
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
-# ARG group=audio
+ARG group=audio
+
+ADD sources.list /etc/apt/
 
 RUN useradd -ms /bin/bash ${user}
 
@@ -11,12 +13,8 @@ RUN apt-get -qq -y update \
     && apt-get -qq -y install wget \
     && apt-get -qq -y install mpd \
     && apt-get -qq -y install mpc \
+    && apt-get -qq -y install alsa-utils \
     && apt-get clean
-
-# # Install mpd. We need the backports version because the default debian version crashes on certain characters when updating the DB
-# # See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=768094
-# RUN echo "deb http://http.debian.net/debian jessie-backports main" >> /etc/apt/sources.list \
-#  && apt-get update && apt-get -y -t jessie-backports install mpd mpc
 
 RUN mkdir -p /var/lib/mpd/music \
     && mkdir -p /var/lib/mpd/playlists \
