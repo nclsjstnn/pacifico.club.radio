@@ -26,4 +26,5 @@ WORKDIR /apps
 # Define additional metadata for our image.
 VOLUME /var/lib/docker
 ADD start /start
+RUN chmod +x /start
 CMD /start
