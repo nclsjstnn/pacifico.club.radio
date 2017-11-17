@@ -21,6 +21,7 @@ services:
       - /data/radio/music:/var/lib/mpd/music
       - /data/radio/playlists:/var/lib/mpd/playlists
       - /data/radio/database:/var/lib/mpd/database
+    restart: always
 
   sima:
     build: ./sima
