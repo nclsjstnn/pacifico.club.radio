@@ -1,8 +1,6 @@
 FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
-ENV DEBIAN_FRONTEND noninteractive
-
 ARG user=icecast2
 ARG group=icecast
 

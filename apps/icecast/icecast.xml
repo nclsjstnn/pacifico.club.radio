@@ -2,8 +2,8 @@
     <!-- location and admin are two arbitrary strings that are e.g. visible
          on the server info page of the icecast web interface
          (server_version.xsl). -->
-    <location>Earth</location>
-    <admin>icemaster@localhost</admin>
+    <location>Santiago de Chile</location>
+    <admin>radiosativa@mananarecords.com</admin>
 
     <limits>
         <clients>100</clients>
@@ -19,7 +19,7 @@
              it also significantly increases latency between the source
              client and listening client.  For low-latency setups, you
              might want to disable this. -->
-        <burst-on-connect>1</burst-on-connect>
+        <burst-on-connect>0</burst-on-connect>
         <!-- same as burst-on-connect, but this allows for being more
              specific on how much to burst. Most people won't need to
              change from the default 64k. Applies to all mountpoints  -->
@@ -164,7 +164,7 @@
         <accesslog>access.log</accesslog>
         <errorlog>error.log</errorlog>
         <!-- <playlistlog>playlist.log</playlistlog> -->
-      	<loglevel>3</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+      	<loglevel>4</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
       	<logsize>10000</logsize> <!-- Max size of a logfile -->
         <!-- If logarchive is enabled (1), then when logsize is reached
              the logfile will be moved to [error|access|playlist].log.DATESTAMP,

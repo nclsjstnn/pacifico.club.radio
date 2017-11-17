@@ -11,7 +11,6 @@ RUN apt-get -qq -y update \
     && apt-get -qq -y install wget \
     && apt-get -qq -y install mpd \
     && apt-get -qq -y install mpc \
-    && apt-get -qq -y install alsa-utils \
     && apt-get clean
 
 RUN mkdir -p /var/lib/mpd/music \
