@@ -1,4 +1,4 @@
-version: '2.2'
+version: '2'
 
 services:
   icecast:
@@ -7,7 +7,6 @@ services:
       - "8000:8000"
     networks:
       - radio
-    mem_limit: 4000m
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
@@ -22,7 +21,6 @@ services:
       - /data/radio/music:/var/lib/mpd/music
       - /data/radio/playlists:/var/lib/mpd/playlists
       - /data/radio/database:/var/lib/mpd/database
-    cpu_percent: 50
 
   sima:
     build: ./sima
