@@ -6,7 +6,7 @@
     <admin>radiosativa@mananarecords.com</admin>
 
     <limits>
-        <clients>100</clients>
+        <clients>80</clients>
         <sources>2</sources>
         <threadpool>5</threadpool>
         <queue-size>524288</queue-size>
@@ -66,11 +66,9 @@
         <!-- <bind-address>127.0.0.1</bind-address> -->
         <!-- <shoutcast-mount>/stream</shoutcast-mount> -->
     </listen-socket>
-    <!--
     <listen-socket>
-        <port>8001</port>
+        <port>80</port>
     </listen-socket>
-    -->
 
     <!--<master-server>127.0.0.1</master-server>-->
     <!--<master-server-port>8001</master-server-port>-->

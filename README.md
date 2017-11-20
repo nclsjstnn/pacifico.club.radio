@@ -22,7 +22,7 @@ launching the containers one-by-one, your choice.
 The default access to applications are:
 
 - mpd: `http://localhost:6600` or `http://docker_machine_ip:6600`
-- icecast streaming: `http://localhost:8000/mpd` or `http://docker_machine_ip:8000/mpd`
+- icecast streaming: `http://localhost:80/mpd` or `http://docker_machine_ip:80/mpd`
 - ympd gui: `http://localhost:8080` or `http://docker_machine_ip:8080`
 
 ### Docker Compose
@@ -39,7 +39,7 @@ Clone this repo. **Edit docker-compose.yml** and add your host volumes for your 
 
 2. Run Icecast
 
-    docker run -p 8000:8000 --net music_stack --name=icecast -d vitiman/alpine-icecast:latest
+    docker run -p 80:80 --net music_stack --name=icecast -d vitiman/alpine-icecast:latest
 
 3. Run MPD
 

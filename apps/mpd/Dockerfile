@@ -26,7 +26,7 @@ RUN mkdir -p /var/lib/mpd/music \
 RUN chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 
 # Declare a music , playlists and database volume (state, tag_cache and sticker.sql)
-VOLUME ["/var/lib/mpd/music", "/var/lib/mpd/playlists", "/var/lib/mpd/database"]
+#VOLUME ["/var/lib/mpd/music", "/var/lib/mpd/playlists", "/var/lib/mpd/database"]
 COPY mpd.conf /etc/mpd.conf
 
 # Entry point for mpc update and stuff
