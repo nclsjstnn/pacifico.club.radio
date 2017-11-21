@@ -23,12 +23,12 @@ services:
       - /data/radio/playlists:/var/lib/mpd/playlists
       - /data/radio/database:/var/lib/mpd/database
 
-  # sima:
-  #   build: ./sima
-  #   depends_on:
-  #     - mpd
-  #   networks:
-  #     - radio
+  sima:
+    build: ./sima
+    depends_on:
+      - mpd
+    networks:
+      - radio
 
   ympd:
     build: ./ympd

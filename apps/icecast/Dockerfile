@@ -7,7 +7,7 @@ ARG group=icecast
 RUN useradd -ms /bin/bash ${user} && groupadd ${group}
 
 RUN apt-get -qq -y update \
-    && apt-get -qq -y install icecast2 \
+    && apt-get -qq -y install --no-install-recommends icecast2 \
     && apt-get clean
 
 COPY silence.ogg /usr/share/icecast2/silence.ogg

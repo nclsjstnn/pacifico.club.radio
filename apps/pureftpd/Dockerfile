@@ -5,7 +5,7 @@ ARG PASSWORD=indico
 ARG USERID=sativo
 
 RUN apt-get -qq -y update \
-    && apt-get -qq -y install pure-ftpd \
+    && apt-get -qq -y install --no-install-recommends pure-ftpd \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd ftpgroup && useradd -g ftpgroup -m ftpuser
@@ -18,5 +18,5 @@ CMD chown -R 1000 /home/ftpusers/${USERID}
 
 EXPOSE 21 30009
 
-CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R"]
+CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R", "-P", "$PUBLICHOST", "-p", "30000:30009"]
 #CMD pure-ftpd -c 50 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
