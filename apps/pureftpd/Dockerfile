@@ -1,12 +1,12 @@
 FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
-ARG PASSWORD=indico
-ARG USERID=sativo
+ARG USERID={$USERID}
+ARG PASSWORD={$PASSWORD}
 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends pure-ftpd \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd ftpgroup && useradd -g ftpgroup -m ftpuser
 
@@ -15,7 +15,5 @@ RUN ( echo ${PASSWORD} ; echo ${PASSWORD} ) | pure-pw useradd ${USERID} -u ftpus
 RUN mkdir -p /home/ftpusers/${USERID} \
     && chown -R ftpuser /home/ftpusers/${USERID} \
     && chmod g+w /home/ftpusers/${USERID}
-
-EXPOSE 21
 
 CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R"]

@@ -47,6 +47,15 @@ services:
       - /data/radio/music:/home/ftpuser/sativo
     privileged: true
 
+  openssh:
+    build: ./openssh
+    ports:
+      - "22:22"
+    environment:
+      - USERID=${FTP_USER}
+      - PASSWORD=${FTP_PASS}
+    privileged: true
+
 networks:
   radio:
     driver: bridge
