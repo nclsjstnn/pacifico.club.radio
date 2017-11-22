@@ -10,13 +10,12 @@ RUN apt-get -qq -y update \
 
 RUN groupadd ftpgroup && useradd -g ftpgroup -m ftpuser
 
-VOLUME ["/home/ftpusers/sativo"]
-
 RUN ( echo ${PASSWORD} ; echo ${PASSWORD} ) | pure-pw useradd ${USERID} -u ftpuser -g ftpgroup -d /home/ftpusers/${USERID} > /dev/null 2>&1 && pure-pw mkdb
-RUN mkdir -p /home/ftpusers/${USERID}
-CMD chown -R 1000 /home/ftpusers/${USERID}
 
-EXPOSE 21 30009
+RUN mkdir -p /home/ftpusers/${USERID} \
+    && chown -R ftpuser /home/ftpusers/${USERID} \
+    && chmod g+w /home/ftpusers/${USERID}
 
-CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R", "-P", "$PUBLICHOST", "-p", "30000:30009"]
-#CMD pure-ftpd -c 50 -C 10 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
+EXPOSE 21
+
+CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R"]

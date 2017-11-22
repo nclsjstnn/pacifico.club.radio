@@ -43,9 +43,6 @@ services:
     build: ./pureftpd
     ports:
       - "21:21"
-      - "30000-30009:30000-30009"
-    environment:
-      PUBLICHOST: localhost
     volumes:
       - /data/radio/music:/home/ftpuser/sativo
     privileged: true
