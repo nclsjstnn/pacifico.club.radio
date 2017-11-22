@@ -1,8 +1,8 @@
 FROM resin/raspberrypi3-debian:jessie
 MAINTAINER @jstnn
 
-ARG USERID={$USERID}
-ARG PASSWORD={$PASSWORD}
+ARG USERID=sativo
+ARG PASSWORD=indico
 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends pure-ftpd \
