@@ -2,10 +2,10 @@
 containers=$(find * -maxdepth 0 -type d)
 
 keep_alive() {
-	if [[ $(docker-compose ps 2>&1 | tail -n+3 | grep -v Up | wc -l) -ne 0 ]]; then
-		echo "The radio is up"
-		# docker-compose down
-		# docker-compose up &
+	if [[ $(docker-compose ps -q | xargs docker inspect -f '{{ .State.ExitCode }}' | grep -v 0 | wc -l | tr -d ' ') -ne 0 ]]; then
+		echo "A container has exited. Restarting docker stack"
+		docker-compose down
+		docker-compose up &
 	fi
 }
 
@@ -29,3 +29,4 @@ while true; do
 	sleep 10m
 	keep_alive
 done
+docker-compose ps | tail -n+3 | grep -v Up | wc -l
