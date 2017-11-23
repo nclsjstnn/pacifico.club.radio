@@ -29,4 +29,3 @@ while true; do
 	sleep 10m
 	keep_alive
 done
-docker-compose ps | tail -n+3 | grep -v Up | wc -l
