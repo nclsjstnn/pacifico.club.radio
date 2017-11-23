@@ -43,8 +43,11 @@ services:
     build: ./pureftpd
     ports:
       - "21:21"
+      - "30000-30009:30000-30009"
     volumes:
       - /data/radio/music:/home/ftpuser/sativo
+    environment:
+      PUBLICHOST: localhost
     privileged: true
 
   openssh:

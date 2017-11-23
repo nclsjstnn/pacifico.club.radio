@@ -16,4 +16,4 @@ VOLUME /home/ftpusers/${USERID}
 
 RUN chown -R ftpuser /home/ftpusers/${USERID}
 
-CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R"]
+CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R", "-P", "$PUBLICHOST", "-p", "30000:30009"]
