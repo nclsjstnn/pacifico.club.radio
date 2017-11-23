@@ -3,9 +3,9 @@ MAINTAINER @jstnn
 
 # here we install apt dependencies. We also remove the apt lists in the same step,
 # this reduces the size of the docker image.
-RUN apt-get update && apt-get install -yq --no-install-recommends \
-    openssh-server && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get -qq -y update \
+    && apt-get -qq -y install --no-install-recommends openssh-server \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # here we set up the config for openSSH.
 RUN mkdir /var/run/sshd \

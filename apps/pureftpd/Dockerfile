@@ -12,8 +12,8 @@ RUN groupadd ftpgroup && useradd -g ftpgroup -m ftpuser
 
 RUN ( echo ${PASSWORD} ; echo ${PASSWORD} ) | pure-pw useradd ${USERID} -u ftpuser -g ftpgroup -d /home/ftpusers/${USERID} > /dev/null 2>&1 && pure-pw mkdb
 
-RUN mkdir -p /home/ftpusers/${USERID} \
-    && chown -R ftpuser /home/ftpusers/${USERID} \
-    && chmod g+w /home/ftpusers/${USERID}
+VOLUME /home/ftpusers/${USERID}
+
+RUN chown -R ftpuser /home/ftpusers/${USERID}
 
 CMD ["pure-ftpd", "-l", "puredb:/etc/pure-ftpd/pureftpd.pdb", "-E", "-j", "-R"]
