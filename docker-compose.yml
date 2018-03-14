@@ -2,7 +2,7 @@ version: '2'
 
 services:
   icecast:
-    build: ./icecast
+    image: jstnn/arm-icecast
     ports:
       - "8000:8000"
       - "80:80"
@@ -11,7 +11,7 @@ services:
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
-    build: ./mpd
+    image: jstnn/arm-mpd
     ports:
       - "6600:6600"
     depends_on:
@@ -24,14 +24,14 @@ services:
       - /data/radio/database:/var/lib/mpd/database
 
   sima:
-    build: ./sima
+    image: jstnn/arm-sima
     depends_on:
       - mpd
     networks:
       - radio
 
   ympd:
-    build: ./ympd
+    image: jstnn/arm-ympd
     ports:
       - "8080:8080"
     depends_on:
@@ -39,25 +39,16 @@ services:
     networks:
       - radio
   
-  pureftpd:
-    build: ./pureftpd
-    ports:
-      - "21:21"
-      - "30000-30009:30000-30009"
-    volumes:
-      - /data/radio/music:/home/ftpuser/sativo
-    environment:
-      PUBLICHOST: localhost
-    privileged: true
-
-  openssh:
-    build: ./openssh
-    ports:
-      - "22:22"
-    environment:
-      - USERID=${FTP_USER}
-      - PASSWORD=${FTP_PASS}
-    privileged: true
+  # pureftpd:
+  #   build: ./pureftpd
+  #   ports:
+  #     - "21:21"
+  #     - "30000-30009:30000-30009"
+  #   volumes:
+  #     - /data/radio/music:/home/ftpuser/sativo
+  #   environment:
+  #     PUBLICHOST: localhost
+  #   privileged: true
 
 networks:
   radio:
