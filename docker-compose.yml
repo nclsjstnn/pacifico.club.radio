@@ -21,9 +21,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - docker/volumes/c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/music:/var/lib/mpd/music
-      - docker/volumes/c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/playlists:/var/lib/mpd/playlists
-      - docker/volumes/c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/database:/var/lib/mpd/database
+      - 'c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/music:/var/lib/mpd/music'
+      - 'c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/playlists:/var/lib/mpd/playlists'
+      - 'c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/database:/var/lib/mpd/database'
     network_mode: host
     privileged: true
     restart: always
