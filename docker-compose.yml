@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
       - "80:80"
-    network_mode: "bridge"
+    network_mode: "host"
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
@@ -15,7 +15,7 @@ services:
       - "6600:6600"
     depends_on:
       - icecast
-    network_mode: "bridge"
+    network_mode: "host"
     volumes:
       - /data/radio/music:/var/lib/mpd/music
       - /data/radio/playlists:/var/lib/mpd/playlists
@@ -25,7 +25,7 @@ services:
     image: jstnn/arm-sima
     depends_on:
       - mpd
-    network_mode: "bridge"
+    network_mode: "host"
 
   ympd:
     image: jstnn/arm-ympd
@@ -33,7 +33,7 @@ services:
       - "8080:8080"
     depends_on:
       - mpd
-    network_mode: "bridge"
+    network_mode: "host"
   
   # pureftpd:
   #   build: ./pureftpd
@@ -48,7 +48,7 @@ services:
 
 # network_mode:
 #   radio:
-#    er: ""bridge"d"
+#    er: ""host"d"
 
 # If you use your own volumes instead host volumes, uncomment this section
 # volumes:
