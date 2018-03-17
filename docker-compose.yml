@@ -1,7 +1,7 @@
 version: '2'
 
 volumes: 
-    resin-data: null
+    resin-data: {}
 
 services:
   icecast:
@@ -21,9 +21,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - 'c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/music:/var/lib/mpd/music'
-      - 'c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/playlists:/var/lib/mpd/playlists'
-      - 'c14060015ce29ba21030b273831fcee9_resin-data/_data/radio/database:/var/lib/mpd/database'
+      - resin-data:/var/lib/mpd/music
+      - resin-data:/var/lib/mpd/playlists
+      - resin-data:/var/lib/mpd/database
     network_mode: host
     privileged: true
     restart: always
