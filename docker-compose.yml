@@ -19,9 +19,9 @@ services:
     networks:
       - radio
     volumes:
-      - /data/radio/music:/var/lib/mpd/music
-      - /data/radio/playlists:/var/lib/mpd/playlists
-      - /data/radio/database:/var/lib/mpd/database
+      - resin-data/radio/music:/var/lib/mpd/music
+      - resin-data/radio/playlists:/var/lib/mpd/playlists
+      - resin-data/radio/database:/var/lib/mpd/database
 
   sima:
     image: jstnn/arm-sima
@@ -52,7 +52,6 @@ services:
 
 networks:
   radio:
-    network_mode: host
 
 # If you use your own volumes instead host volumes, uncomment this section
 # volumes:
