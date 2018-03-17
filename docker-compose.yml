@@ -11,7 +11,7 @@ services:
     expose:
       - "8000"
       - "80"
-    network_mode: "host"
+    network_mode: host
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
@@ -22,7 +22,7 @@ services:
       - "6600"
     depends_on:
       - icecast
-    network_mode: "host"
+    network_mode: host
     volumes:
       - resin-data/radio/music:/var/lib/mpd/music
       - resin-data/radio/playlists:/var/lib/mpd/playlists
@@ -32,7 +32,7 @@ services:
     image: jstnn/arm-sima
     depends_on:
       - mpd
-    network_mode: "host"
+    network_mode: host
 
   ympd:
     image: jstnn/arm-ympd
@@ -42,7 +42,7 @@ services:
       - "8080"
     depends_on:
       - mpd
-    network_mode: "host"
+    network_mode: host
   
   # pureftpd:
   #   build: ./pureftpd
@@ -57,7 +57,7 @@ services:
 
 # network_mode:
 #   radio:
-#    er: ""host"d"
+#    er: "hostd"
 
 # If you use your own volumes instead host volumes, uncomment this section
 # volumes:
