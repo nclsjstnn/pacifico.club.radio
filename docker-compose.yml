@@ -1,5 +1,6 @@
-version: '2.1'
-
+version: '2'
+volumes: 
+    resin-data:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -19,9 +20,9 @@ services:
     networks:
       - radio
     volumes:
-      - resin-data/radio/music:/var/lib/mpd/music
-      - resin-data/radio/playlists:/var/lib/mpd/playlists
-      - resin-data/radio/database:/var/lib/mpd/database
+      - /data/radio/music:/var/lib/mpd/music
+      - /data/radio/playlists:/var/lib/mpd/playlists
+      - /data/radio/database:/var/lib/mpd/database
 
   sima:
     image: jstnn/arm-sima
@@ -52,6 +53,7 @@ services:
 
 networks:
   radio:
+    driver: bridge
 
 # If you use your own volumes instead host volumes, uncomment this section
 # volumes:
