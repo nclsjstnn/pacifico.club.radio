@@ -13,10 +13,8 @@ services:
     image: jstnn/arm-mpd
     ports:
       - "6600:6600"
-    depends_on:
-      - icecast
-    networks:
-      - radio
+    depends_on: icecast
+    network_mode: bridge
     volumes:
       - /data/radio/music:/var/lib/mpd/music
       - /data/radio/playlists:/var/lib/mpd/playlists
@@ -24,16 +22,14 @@ services:
 
   sima:
     image: jstnn/arm-sima
-    depends_on:
-      - mpd
+    depends_on: mpd
     network_mode: bridge
 
   ympd:
     image: jstnn/arm-ympd
     ports:
       - "8080:8080"
-    depends_on:
-      - mpd
+    depends_on: mpd
     network_mode: bridge
   
   # pureftpd:
