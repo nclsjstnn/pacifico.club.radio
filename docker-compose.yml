@@ -1,7 +1,8 @@
 version: '2.1'
 networks: {}
 volumes: 
-    resin-data: {}
+    resin-data: 
+      external: true
 services:
   icecast:
     image: jstnn/arm-icecast
