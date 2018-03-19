@@ -4,6 +4,7 @@ volumes:
     resin-data: {}
 services:
   icecast:
+    build: ./icecast
     image: jstnn/arm-icecast
     ports:
       - "8000:8000"
