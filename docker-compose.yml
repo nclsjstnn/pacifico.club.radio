@@ -1,8 +1,7 @@
 version: '2.1'
 networks: {}
 volumes: 
-    resin-data: 
-      external: true
+    resin-data: {}
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -10,7 +9,7 @@ services:
       - "8000"
     network_mode: host
     privileged: true
-    restart: always
+    # restart: always
 
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
