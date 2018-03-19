@@ -7,7 +7,7 @@ services:
     image: jstnn/arm-icecast
     expose:
       - "8000"
-    network_mode: host
+    # network_mode: host
     privileged: true
     # restart: always
 
