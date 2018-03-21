@@ -19,9 +19,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - resin-data:/var/lib/mpd/music
-      - resin-data:/var/lib/mpd/playlists
-      - resin-data:/var/lib/mpd/database
+      - /var/lib/mpd/music
+      - /var/lib/mpd/playlists
+      - /var/lib/mpd/database
     # network_mode: host
     privileged: true
     # restart: always
