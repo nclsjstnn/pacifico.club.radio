@@ -2,6 +2,10 @@ version: '2.1'
 networks: {}
 volumes: 
   resin-data:
+    driver_opts:
+      type: volume
+      device: /mnt/data/docker/volumes/1491382e28638110cc70b87d895f682b_resin-data/_data
+      o: bind
 services:
   icecast:
     image: jstnn/arm-icecast
