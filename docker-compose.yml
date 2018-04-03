@@ -1,11 +1,7 @@
 version: '2.1'
 networks: {}
 volumes: 
-  resin-data:
-    driver_opts:
-      type: volume
-      device: /mnt/data/docker/volumes/1491382e28638110cc70b87d895f682b_resin-data/_data
-      o: bind
+  1491382e28638110cc70b87d895f682b_resin-data:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -29,9 +25,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - resin-data:/var/lib/mpd/music
-      - resin-data:/var/lib/mpd/playlists
-      - resin-data:/var/lib/mpd/database
+      - 1491382e28638110cc70b87d895f682b_resin-data:/var/lib/mpd/music:rw
+      - 1491382e28638110cc70b87d895f682b_resin-data:/var/lib/mpd/playlists:rw
+      - 1491382e28638110cc70b87d895f682b_resin-data:/var/lib/mpd/database:rw
     network_mode: host
     privileged: true
     restart: always
