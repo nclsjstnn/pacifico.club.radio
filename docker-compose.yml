@@ -25,7 +25,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - resin-data:/var/lib/mpd
+      - resin-data:/var/lib/mpd/music:rw
+      - resin-data:/var/lib/mpd/playlists:rw
+      - resin-data:/var/lib/mpd/database:rw
     network_mode: host
     privileged: true
     restart: always
@@ -62,9 +64,9 @@ services:
   #   privileged: true
 
 # If you use your own volumes instead host volumes, uncomment this section
-# volumes:
-#   mpd_music:
-#     external: true
+volumes:
+  resin-data:
+    external: true
 #   mpd_playlists:
 #     external: true
 #   mpd_database:
