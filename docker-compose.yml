@@ -28,8 +28,8 @@ services:
       - icecast
     volumes:
       - resin-data:/var/lib/mpd/music
-      - playlists:/var/lib/mpd/playlists
-      - database:/var/lib/mpd/database
+      - playlists:/var/lib/mpd/playlists:rw
+      - database:/var/lib/mpd/database:rw
     network_mode: host
     privileged: true
     restart: always
