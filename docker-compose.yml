@@ -1,9 +1,5 @@
 version: '2'
 networks: {}
-volumes: 
-  music:
-  playlists:
-  database:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -27,9 +23,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - 'music:/var/lib/mpd/music'
-      - 'playlists:/var/lib/mpd/playlists'
-      - 'database:/var/lib/mpd/database'
+      - 'mpd_music:/var/lib/mpd/music'
+      - 'mpd_playlists:/var/lib/mpd/playlists'
+      - 'mpd_database:/var/lib/mpd/database'
     network_mode: host
     privileged: true
     restart: always
@@ -66,12 +62,12 @@ services:
   #   privileged: true
 
 # If you use your own volumes instead host volumes, uncomment this section
-# volumes:
-#   mpd_music:
-#     external: true
-#   mpd_playlists:
-#     external: true
-#   mpd_database:
-#     external: true
+volumes:
+  mpd_music:
+    external: true
+  mpd_playlists:
+    external: true
+  mpd_database:
+    external: true
 
 
