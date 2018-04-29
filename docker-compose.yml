@@ -1,7 +1,9 @@
 version: '2.1'
 networks: {}
 volumes: 
-  1491382e28638110cc70b87d895f682b_resin-data:
+  music:
+  playlists:
+  database:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -25,9 +27,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - 1491382e28638110cc70b87d895f682b_resin-data:/var/lib/mpd/music:rw
-      - 1491382e28638110cc70b87d895f682b_resin-data:/var/lib/mpd/playlists:rw
-      - 1491382e28638110cc70b87d895f682b_resin-data:/var/lib/mpd/database:rw
+      - music:/var/lib/mpd/music:rw
+      - playlists:/var/lib/mpd/playlists:rw
+      - database:/var/lib/mpd/database:rw
     network_mode: host
     privileged: true
     restart: always
