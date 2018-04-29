@@ -20,7 +20,7 @@ services:
   # Add your host volumen in path/to/... or add your own volume below
   mpd:
     # image: jstnn/arm-mpd
-    build: :/mpd
+    build: ./mpd
     expose:
       - "6600"
     ports:
