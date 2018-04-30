@@ -27,10 +27,10 @@ services:
       - "6600:6600"
     depends_on:
       - icecast
-    volumes:
-      - 'mpd-music:/var/lib/mpd/music'
-      - 'mpd-playlists:/var/lib/mpd/playlists'
-      - 'mpd-database:/var/lib/mpd/database'
+    # volumes:
+    #   - 'mpd-music:/var/lib/mpd/music'
+    #   - 'mpd-playlists:/var/lib/mpd/playlists'
+    #   - 'mpd-database:/var/lib/mpd/database'
     network_mode: host
     privileged: true
     restart: always
