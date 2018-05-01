@@ -1,9 +1,9 @@
 version: '2'
 networks: {}
 volumes:
-  mpd-music:
-  mpd-playlists:
-  mpd-database:
+  music:
+  playlists:
+  database:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -21,6 +21,7 @@ services:
   mpd:
     # image: jstnn/arm-mpd
     build: ./mpd
+    user: mpd
     expose:
       - "6600"
     ports:
@@ -28,9 +29,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - '/var/lib/docker/volumes/160e59c2b40d6c8d2ad1af94a13e8a8e049fbe83_resin-data/_data/mpd-music:/var/lib/mpd/music'
-      - '/var/lib/docker/volumes/160e59c2b40d6c8d2ad1af94a13e8a8e049fbe83_resin-data/_data/mpd-playlists:/var/lib/mpd/playlists'
-      - '/var/lib/docker/volumes/160e59c2b40d6c8d2ad1af94a13e8a8e049fbe83_resin-data/_data/mpd-database:/var/lib/mpd/database'
+      - music:/var/lib/mpd/music
+      - playlists:/var/lib/mpd/playlists
+      - database:/var/lib/mpd/database
     network_mode: bridge
     privileged: true
     restart: always

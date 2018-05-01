@@ -22,6 +22,4 @@ RUN chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 
 COPY mpd.conf /etc/mpd.conf
 
-USER ${user}
-
 CMD ["mpd", "--stdout", "--no-daemon"]
