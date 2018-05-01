@@ -12,6 +12,7 @@ RUN apt-get -qq -y update \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # VOLUME [ "/var/lib/mpd/music", "/var/lib/mpd/playlists", "/var/lib/mpd/database" ]
+RUN mkdir /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 
 RUN chown -R ${user} /var/lib/mpd \
     && chown -R ${user} /var/lib/mpd/music \
