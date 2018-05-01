@@ -1,5 +1,5 @@
 FROM resin/raspberrypi3-debian:jessie
-MAINTAINER @jstnn
+LABEL maintainer="n.justiniano@gmail.com"
 
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
@@ -11,7 +11,7 @@ RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends wget mpd mpc \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-VOLUME [ "/var/lib/mpd/music", "/var/lib/mpd/playlists", "/var/lib/mpd/database" ]
+# VOLUME [ "/var/lib/mpd/music", "/var/lib/mpd/playlists", "/var/lib/mpd/database" ]
 
 RUN chown -R ${user} /var/lib/mpd \
     && chown -R ${user} /var/lib/mpd/music \
