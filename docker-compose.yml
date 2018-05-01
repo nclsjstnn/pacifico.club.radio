@@ -13,11 +13,11 @@ services:
     ports:
       - "8000:8000"
       - "80:80"
-    network_mode: host
+    network_mode: bridge
     privileged: true
     restart: always
 
-  # Add your host volumen in path/to/... or add your own volume below
+  # Add your bridge volumen in path/to/... or add your own volume below
   mpd:
     # image: jstnn/arm-mpd
     build: ./mpd
@@ -27,11 +27,11 @@ services:
       - "6600:6600"
     depends_on:
       - icecast
-    # volumes:
-    #   - 'mpd-music:/var/lib/mpd/music'
-    #   - 'mpd-playlists:/var/lib/mpd/playlists'
-    #   - 'mpd-database:/var/lib/mpd/database'
-    network_mode: host
+    volumes:
+      - 'mpd-music:/var/lib/mpd/music'
+      - 'mpd-playlists:/var/lib/mpd/playlists'
+      - 'mpd-database:/var/lib/mpd/database'
+    network_mode: bridge
     privileged: true
     restart: always
 
@@ -39,7 +39,7 @@ services:
     image: jstnn/arm-sima
     depends_on:
       - mpd
-    network_mode: host
+    network_mode: bridge
     privileged: true
     restart: always
 
@@ -51,7 +51,7 @@ services:
       - "8080:8080"
     depends_on:
       - mpd
-    network_mode: host
+    network_mode: bridge
     privileged: true
     restart: always
   
@@ -63,10 +63,10 @@ services:
   #   volumes:
   #     - /data/radio/music:/home/ftpuser/sativo
   #   environment:
-  #     PUBLICHOST: localhost
+  #     PUBLICbridge: localbridge
   #   privileged: true
 
-# If you use your own volumes instead host volumes, uncomment this section
+# If you use your own volumes instead bridge volumes, uncomment this section
 # volumes:
 #   mpd_music:
 #     external: true
