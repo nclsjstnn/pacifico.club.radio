@@ -3,7 +3,6 @@ LABEL maintainer="n.justiniano@gmail.com"
 
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
-ARG group=audio
 
 RUN useradd -ms /bin/bash ${user}
 
@@ -21,5 +20,7 @@ RUN chown -R ${user} /var/lib/mpd \
 RUN chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 
 COPY mpd.conf /etc/mpd.conf
+
+USER ${user}
 
 CMD ["mpd", "--stdout", "--no-daemon"]
