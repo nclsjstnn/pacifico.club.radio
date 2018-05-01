@@ -21,7 +21,7 @@ services:
   mpd:
     # image: jstnn/arm-mpd
     build: ./mpd
-     expose:
+    expose:
       - "6600"
     ports:
       - "6600:6600"
