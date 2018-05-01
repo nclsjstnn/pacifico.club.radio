@@ -21,6 +21,7 @@ services:
   mpd:
     # image: jstnn/arm-mpd
     build: ./mpd
+    user: mpd
     expose:
       - "6600"
     ports:
@@ -40,7 +41,6 @@ services:
     depends_on:
       - mpd
     network_mode: bridge
-    privileged: true
     restart: always
 
   ympd:
