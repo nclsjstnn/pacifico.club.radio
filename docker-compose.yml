@@ -1,7 +1,9 @@
 version: '2'
 networks: {}
 volumes:
-  resin-data:
+  music:
+  # playlists:
+  # database:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -26,9 +28,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - resin-data/music:/var/lib/mpd/music
-      - resin-data/playlists:/var/lib/mpd/playlists
-      - resin-data/database:/var/lib/mpd/database
+      - music:/var/lib/mpd/music
+      # - playlists:/var/lib/mpd/playlists
+      # - database:/var/lib/mpd/database
     network_mode: bridge
     privileged: true
     restart: always
