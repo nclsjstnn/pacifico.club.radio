@@ -2,8 +2,8 @@ version: '2'
 networks: {}
 volumes:
   music:
-  # playlists:
-  # database:
+  playlists:
+  database:
 services:
   icecast:
     image: jstnn/arm-icecast
@@ -17,10 +17,9 @@ services:
     privileged: true
     restart: always
 
-  # Add your bridge volumen in path/to/... or add your own volume below
   mpd:
-    # image: jstnn/arm-mpd
-    build: ./mpd
+    image: jstnn/arm-mpd
+    # build: ./mpd
     expose:
       - "6600"
     ports:
@@ -29,8 +28,8 @@ services:
       - icecast
     volumes:
       - music:/var/lib/mpd/music
-      # - playlists:/var/lib/mpd/playlists
-      # - database:/var/lib/mpd/database
+      - playlists:/var/lib/mpd/playlists
+      - database:/var/lib/mpd/database
     network_mode: bridge
     privileged: true
     restart: always
