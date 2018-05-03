@@ -15,6 +15,7 @@ services:
       - "80:80"
     network_mode: bridge
     restart: always
+    privileged: true    
 
   mpd:
     image: jstnn/arm-mpd
@@ -31,6 +32,7 @@ services:
       - database:/var/lib/mpd/database
     network_mode: bridge
     restart: always
+    privileged: true    
 
   sima:
     image: jstnn/arm-sima
@@ -38,6 +40,7 @@ services:
       - mpd
     network_mode: bridge
     restart: always
+    privileged: true    
 
   ympd:
     image: jstnn/arm-ympd
@@ -49,6 +52,7 @@ services:
       - mpd
     network_mode: bridge
     restart: always
+    privileged: true    
   
   # pureftpd:
   #   build: ./pureftpd
