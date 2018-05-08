@@ -6,8 +6,8 @@ volumes:
   database:
 services:
   icecast:
-    # image: jstnn/arm-icecast
     build: ./icecast
+    # image: jstnn/arm-icecast
     expose:
       - "8000"
       - "80"
@@ -18,9 +18,9 @@ services:
     restart: always
     privileged: true    
 
-  mpd:
-    # image: jstnn/arm-mpd
+  mpd:   
     build: ./mpd
+    # image: jstnn/arm-mpd
     expose:
       - "6600"
     ports:
