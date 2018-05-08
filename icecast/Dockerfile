@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian:latest
+FROM resin/raspberrypi3-debian:buster-20180418
 
 ENV INITSYSTEM on
 
