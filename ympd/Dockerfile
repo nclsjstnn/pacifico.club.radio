@@ -1,5 +1,6 @@
-FROM resin/raspberrypi3-debian:jessie
-MAINTAINER @jstnn 
+FROM resin/raspberrypi3-debian:latest
+
+ENV INITSYSTEM on
 
 ENV YMPD_VERSION 1.2.3
 

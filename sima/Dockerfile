@@ -1,5 +1,6 @@
-FROM resin/raspberrypi3-debian:jessie
-MAINTAINER @jstnn
+FROM resin/raspberrypi3-debian:latest
+
+ENV INITSYSTEM on
 
 ENV SIMA_VERSION 0.14.4
 
@@ -12,7 +13,7 @@ RUN curl -fsSl http://media.kaliko.me/src/sima/releases/MPD_sima-$SIMA_VERSION.t
     && sed -i 's,https://raw.github.com/pypa/pip/master/contrib/get-pip.py,https://bootstrap.pypa.io/get-pip.py,g' MPD_sima-$SIMA_VERSION/vinstall.py \
     && rm -rf ./sima.tar.xz \
     && python3 MPD_sima-$SIMA_VERSION/vinstall.py
-    
+
 COPY sima.conf /MPD_sima-$SIMA_VERSION/sima.conf
 WORKDIR MPD_sima-$SIMA_VERSION
 

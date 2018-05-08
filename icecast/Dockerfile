@@ -1,5 +1,6 @@
 FROM resin/raspberrypi3-debian:latest
-LABEL maintainer="n.justiniano@gmail.com"
+
+ENV INITSYSTEM on
 
 ARG user=icecast2
 ARG group=icecast
@@ -18,7 +19,5 @@ RUN mkdir -p /var/log/icecast \
     && chown -R ${user}:${group} /var/log/icecast
 
 USER ${user}
-
-ENV INITSYSTEM on
 
 CMD ["icecast2", "-c", "/usr/share/icecast2/icecast.xml"]

@@ -7,7 +7,6 @@ volumes:
 services:
   icecast:
     build: ./icecast
-    # image: jstnn/arm-icecast
     expose:
       - "8000"
       - "80"
@@ -20,7 +19,6 @@ services:
 
   mpd:   
     build: ./mpd
-    # image: jstnn/arm-mpd
     expose:
       - "6600"
     ports:
@@ -36,7 +34,7 @@ services:
     privileged: true    
 
   sima:
-    image: jstnn/arm-sima
+    build: ./sima
     depends_on:
       - mpd
     network_mode: bridge
@@ -44,7 +42,7 @@ services:
     privileged: true    
 
   ympd:
-    image: jstnn/arm-ympd
+    build: ./ympd
     expose:
       - "8080"
     ports:
