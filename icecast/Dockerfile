@@ -18,6 +18,6 @@ RUN mkdir -p /var/log/icecast \
     && chown -R ${user}:${group} /usr/share/icecast2 \
     && chown -R ${user}:${group} /var/log/icecast
 
-# USER ${user}
+USER ${user}
 
 CMD ["icecast2", "-c", "/usr/share/icecast2/icecast.xml"]
