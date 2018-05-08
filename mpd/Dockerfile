@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/raspberrypi3-debian
 LABEL maintainer="n.justiniano@gmail.com"
 
 # # https://docs.docker.com/engine/reference/builder/#arg
