@@ -31,7 +31,7 @@ services:
       - database:/var/lib/mpd/database
     network_mode: bridge
     restart: always
-    # privileged: true    
+    privileged: true    
 
   sima:
     build: ./sima
