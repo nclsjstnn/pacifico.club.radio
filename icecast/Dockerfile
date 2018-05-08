@@ -1,5 +1,5 @@
-FROM resin/raspberrypi3-debian:jessie
-MAINTAINER @jstnn
+FROM resin/%%RESIN_MACHINE_NAME%%-debian
+LABEL maintainer="n.justiniano@gmail.com"
 
 ARG user=icecast2
 ARG group=icecast
@@ -18,4 +18,7 @@ RUN mkdir -p /var/log/icecast \
     && chown -R ${user}:${group} /var/log/icecast
 
 USER ${user}
+
+ENV INITSYSTEM on
+
 CMD ["icecast2", "-c", "/usr/share/icecast2/icecast.xml"]

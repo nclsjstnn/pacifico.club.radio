@@ -1,7 +1,5 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/%%RESIN_MACHINE_NAME%%-debian
 LABEL maintainer="n.justiniano@gmail.com"
-
-ENV INITSYSTEM on 
 
 # https://docs.docker.com/engine/reference/builder/#arg
 ARG user=mpd
@@ -28,5 +26,7 @@ RUN chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 COPY mpd.conf /etc/mpd.conf
 
 USER ${user}
+
+ENV INITSYSTEM on
 
 CMD ["mpd", "--stdout", "--no-daemon"]
