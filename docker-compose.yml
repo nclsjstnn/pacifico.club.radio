@@ -15,7 +15,7 @@ services:
       - "80:80"
     network_mode: bridge
     restart: always
-    # privileged: true    
+    privileged: true    
 
   mpd:   
     build: ./mpd
