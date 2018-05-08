@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian
+FROM resin/raspberrypi3-debian:latest
 LABEL maintainer="n.justiniano@gmail.com"
 
 ARG user=icecast2
