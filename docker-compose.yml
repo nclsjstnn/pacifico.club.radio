@@ -13,7 +13,6 @@ services:
     network_mode: host
     restart: always
     privileged: true    
-
   mpd:   
     build: ./mpd
     expose:
@@ -27,7 +26,6 @@ services:
     network_mode: host
     restart: always
     privileged: true    
-
   sima:
     build: ./sima
     depends_on:
@@ -35,7 +33,6 @@ services:
     network_mode: host
     restart: always
     privileged: true    
-
   ympd:
     build: ./ympd
     expose:
@@ -45,7 +42,6 @@ services:
     network_mode: host
     restart: always
     privileged: true    
-  
   # pureftpd:
   #   build: ./pureftpd
   #   ports:
