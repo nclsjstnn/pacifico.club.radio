@@ -9,10 +9,12 @@ services:
     build: ./icecast
     expose:
       - "8000"
-      - "80"
-    network_mode: host
+    ports:
+      - "8000:8000"
+    network_mode: bridge
     restart: always
     privileged: true    
+
   mpd:   
     build: ./mpd
     expose:
@@ -23,25 +25,30 @@ services:
       - music:/var/lib/mpd/music
       - playlists:/var/lib/mpd/playlists
       - database:/var/lib/mpd/database
-    network_mode: host
+    network_mode: bridge
     restart: always
     privileged: true    
+
   sima:
     build: ./sima
     depends_on:
       - mpd
-    network_mode: host
+    network_mode: bridge
     restart: always
     privileged: true    
+
   ympd:
     build: ./ympd
     expose:
       - "8080"
+    ports:
+      - "8080:8080"
     depends_on:
       - mpd
-    network_mode: host
+    network_mode: bridge
     restart: always
     privileged: true    
+  
   # pureftpd:
   #   build: ./pureftpd
   #   ports:
@@ -50,10 +57,10 @@ services:
   #   volumes:
   #     - /data/radio/music:/home/ftpuser/sativo
   #   environment:
-  #     PUBLIChost: localhost
+  #     PUBLICbridge: localbridge
   #   privileged: true
 
-# If you use your own volumes instead host volumes, uncomment this section
+# If you use your own volumes instead bridge volumes, uncomment this section
 # volumes:
 #   mpd_music:
 #     external: true
