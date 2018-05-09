@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian:jessie
+FROM resin/raspberrypi3-debian:latest
 MAINTAINER @jstnn
 
 ARG USERID=sativo
