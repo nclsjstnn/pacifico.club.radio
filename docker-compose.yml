@@ -19,6 +19,8 @@ services:
     build: ./mpd
     expose:
       - "6600"
+    ports:
+      - "6600:6600"
     depends_on:
       - icecast
     volumes:
