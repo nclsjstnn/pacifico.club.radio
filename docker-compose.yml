@@ -1,5 +1,7 @@
 version: '2'
-networks: {}
+networks:
+  music_stack:
+    driver: bridge
 volumes:
   music:
   playlists:
@@ -10,7 +12,8 @@ services:
     ports:
       - "8000:8000"
       - "80:80"
-    network_mode: host
+    networks:
+      - music_stack
     restart: always
     privileged: true    
 
@@ -24,7 +27,8 @@ services:
       - music:/var/lib/mpd/music
       - playlists:/var/lib/mpd/playlists
       - database:/var/lib/mpd/database
-    network_mode: host
+    networks:
+      - music_stack
     restart: always
     privileged: true    
 
@@ -32,7 +36,8 @@ services:
     build: ./sima
     depends_on:
       - mpd
-    network_mode: host
+    networks:
+      - music_stack
     restart: always
     privileged: true    
 
@@ -44,7 +49,8 @@ services:
       - "8080:8080"
     depends_on:
       - mpd
-    network_mode: host
+    networks:
+      - music_stack
     restart: always
     privileged: true    
   
