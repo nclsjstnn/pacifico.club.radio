@@ -11,7 +11,7 @@ services:
       - "8000"
     ports:
       - "8000:8000"
-    network_mode: host
+    network_mode: "host"
     restart: always
     privileged: true    
 
@@ -25,7 +25,7 @@ services:
       - music:/var/lib/mpd/music
       - playlists:/var/lib/mpd/playlists
       - database:/var/lib/mpd/database
-    network_mode: host
+    network_mode: "host"
     restart: always
     privileged: true    
 
@@ -33,7 +33,7 @@ services:
     build: ./sima
     depends_on:
       - mpd
-    network_mode: host
+    network_mode: "host"
     restart: always
     privileged: true    
 
@@ -45,7 +45,7 @@ services:
       - "8080:8080"
     depends_on:
       - mpd
-    network_mode: host
+    network_mode: "host"
     restart: always
     privileged: true    
   
@@ -57,10 +57,10 @@ services:
   #   volumes:
   #     - /data/radio/music:/home/ftpuser/sativo
   #   environment:
-  #     PUBLIChost: localhost
+  #     PUBLIC"host": local"host"
   #   privileged: true
 
-# If you use your own volumes instead host volumes, uncomment this section
+# If you use your own volumes instead "host" volumes, uncomment this section
 # volumes:
 #   mpd_music:
 #     external: true
