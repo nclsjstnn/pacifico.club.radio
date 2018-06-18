@@ -7,16 +7,16 @@ volumes:
 services:
   icecast:
     build: ./icecast
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     network_mode: "host"
     restart: always
     privileged: true    
 
   mpd:   
     build: ./mpd
-    expose:
-      - "6600"
+    ports:
+      - "6600:6600"
     depends_on:
       - icecast
     volumes:
@@ -37,8 +37,8 @@ services:
 
   ympd:
     build: ./ympd
-    expose:
-      - "8080"
+    ports:
+      - "8080:8080"
     depends_on:
       - mpd
     network_mode: "host"
