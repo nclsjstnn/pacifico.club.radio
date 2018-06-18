@@ -9,7 +9,7 @@ services:
     build: ./icecast
     ports:
       - "8000:8000"
-    network_mode: "host"
+    network_mode: "bridge"
     restart: always
     privileged: true    
 
@@ -23,7 +23,7 @@ services:
       - music:/var/lib/mpd/music
       - playlists:/var/lib/mpd/playlists
       - database:/var/lib/mpd/database
-    network_mode: "host"
+    network_mode: "bridge"
     restart: always
     privileged: true    
 
@@ -31,7 +31,7 @@ services:
     build: ./sima
     depends_on:
       - mpd
-    network_mode: "host"
+    network_mode: "bridge"
     restart: always
     privileged: true    
 
@@ -41,7 +41,7 @@ services:
       - "8080:8080"
     depends_on:
       - mpd
-    network_mode: "host"
+    network_mode: "bridge"
     restart: always
     privileged: true    
   
