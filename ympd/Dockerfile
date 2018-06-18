@@ -2,7 +2,7 @@ FROM resin/raspberrypi3-debian:latest
 
 ENV INITSYSTEM on
 
-ENV YMPD_VERSION 1.2.3
+ENV YMPD_VERSION 1.3.0
 
 RUN apt-get -qq -y update \
     && apt-get install -qq -y --no-install-recommends build-essential cmake libmpdclient-dev libssl-dev \ 
