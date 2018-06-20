@@ -27,4 +27,4 @@ COPY mpd.conf /etc/mpd.conf
 
 # USER ${user}
 
-CMD ["su", "-", "mpd", "mpd", "--stdout", "--no-daemon"]
+CMD ["su", "-", "mpd", "-c", "mpd", "--stdout", "--no-daemon"]
