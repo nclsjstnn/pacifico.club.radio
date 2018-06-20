@@ -7,7 +7,7 @@ volumes:
 services:
   icecast:
     build: ./icecast
-    network_mode: "bridge"
+    network_mode: host
     restart: always
     privileged: true    
 
@@ -19,7 +19,7 @@ services:
       - music:/var/lib/mpd/music
       - playlists:/var/lib/mpd/playlists
       - database:/var/lib/mpd/database
-    network_mode: "bridge"
+    network_mode: host
     restart: always
     privileged: true    
 
@@ -27,7 +27,7 @@ services:
     build: ./sima
     depends_on:
       - mpd
-    network_mode: "bridge"
+    network_mode: host
     restart: always
     privileged: true    
 
@@ -35,7 +35,7 @@ services:
     build: ./ympd
     depends_on:
       - mpd
-    network_mode: "bridge"
+    network_mode: host
     restart: always
     privileged: true    
   
