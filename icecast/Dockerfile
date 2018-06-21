@@ -2,8 +2,8 @@ FROM resin/raspberrypi3-debian:latest
 RUN ["cross-build-start"]
 ENV INITSYSTEM on
 
-ARG user=icecast2
-ARG group=icecast
+# ARG user=icecast2
+# ARG group=icecast
 
 # RUN useradd -ms /bin/bash ${user} && groupadd ${group} | chpasswd && adduser ${user} sudo
 

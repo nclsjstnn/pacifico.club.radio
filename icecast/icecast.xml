@@ -174,9 +174,11 @@
 
     <security>
         <chroot>0</chroot>
+        <!--
         <changeowner>
             <user>icecast2</user>
             <group>icecast</group>
         </changeowner>
+        -->
     </security>
 </icecast>
