@@ -1,5 +1,5 @@
 FROM resin/raspberrypi3-debian:latest
-
+RUN ["cross-build-start"]
 ENV INITSYSTEM on
 
 ARG user=mpd
@@ -28,3 +28,5 @@ COPY mpd.conf /etc/mpd.conf
 # USER ${user}
 
 CMD ["mpd", "--stdout", "--no-daemon"]
+
+RUN ["cross-build-end"]
