@@ -6,6 +6,8 @@ volumes:
 services:
   icecast:
     build: ./icecast
+    expose:
+      - "8000"
     restart: always
     privileged: true    
 
@@ -29,6 +31,8 @@ services:
 
   ympd:
     build: ./ympd
+    expose:
+      - "8080"
     depends_on:
       - mpd
     restart: always
