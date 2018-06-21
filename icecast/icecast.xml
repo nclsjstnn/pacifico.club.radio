@@ -176,8 +176,8 @@
         <chroot>0</chroot>
         <!--
         <changeowner>
-            <user>nobody</user>
-            <group>nogroup</group>
+            <user>icecast2</user>
+            <group>icecast</group>
         </changeowner>
         -->
     </security>

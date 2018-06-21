@@ -11,4 +11,4 @@ RUN apt-get -qq -y update \
 RUN curl -fsSlL https://www.ympd.org/downloads/ympd-$YMPD_VERSION-armhf.tar.bz2 -o ympd.tar.bz2 \
     && tar -xvf ympd.tar.bz2
 
-CMD ["./ympd", "-h", "mpd", "-p", "6700", "-w", "80"]
+CMD ["./ympd", "-h", "mpd", "-p", "6700", "-w", "8080"]
