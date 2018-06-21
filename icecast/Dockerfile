@@ -5,7 +5,7 @@ ENV INITSYSTEM on
 ARG user=icecast2
 ARG group=icecast
 
-RUN useradd -ms /bin/bash ${user} && groupadd ${group}
+RUN useradd -ms /bin/bash ${user} && groupadd ${group} | chpasswd && adduser ${user} sudo
 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends icecast2 \
