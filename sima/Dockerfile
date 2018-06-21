@@ -1,5 +1,5 @@
 FROM resin/raspberrypi3-debian:latest
-RUN ["cross-build-start"]
+
 ENV INITSYSTEM on
 
 ENV SIMA_VERSION 0.14.4
@@ -18,5 +18,3 @@ COPY sima.conf /MPD_sima-$SIMA_VERSION/sima.conf
 WORKDIR MPD_sima-$SIMA_VERSION
 
 CMD ["./vmpd-sima", "-c", "sima.conf"]
-
-RUN ["cross-build-end"]

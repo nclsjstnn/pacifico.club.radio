@@ -1,5 +1,5 @@
 FROM resin/raspberrypi3-debian:latest
-RUN ["cross-build-start"]
+
 ENV INITSYSTEM on
 
 ENV YMPD_VERSION 1.2.3
@@ -12,5 +12,3 @@ RUN curl -fsSlL https://www.ympd.org/downloads/ympd-$YMPD_VERSION-armhf.tar.bz2 
     && tar -xvf ympd.tar.bz2
 
 CMD ["./ympd", "-h", "mpd", "-p", "6700", "-w", "8080"]
-
-RUN ["cross-build-end"]

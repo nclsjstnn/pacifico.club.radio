@@ -1,5 +1,5 @@
 FROM resin/raspberrypi3-debian:latest
-RUN ["cross-build-start"]
+
 ENV INITSYSTEM on
 
 # ARG user=icecast2
@@ -22,4 +22,3 @@ COPY icecast.xml /usr/share/icecast2/icecast.xml
 # USER ${user}
 
 CMD ["icecast2", "-c", "/usr/share/icecast2/icecast.xml"]
-RUN ["cross-build-end"]
