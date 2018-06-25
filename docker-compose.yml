@@ -8,8 +8,6 @@ services:
     build: ./icecast
     expose:
       - "8000"
-    ports:
-      - "8000:8000"
     restart: always
     privileged: true    
 
@@ -35,8 +33,6 @@ services:
     build: ./ympd
     expose:
       - "8080"
-    ports:
-      - "8080:8080"
     depends_on:
       - mpd
     restart: always
