@@ -44,7 +44,7 @@ services:
       - icecast
       - mpd
     ports:
-      - "80:8080"
+      - "80:80"
   # pureftpd:
   #   build: ./pureftpd
   #   ports:
