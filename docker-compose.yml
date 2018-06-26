@@ -42,11 +42,12 @@ services:
     build: ./haproxy
     depends_on:
       - ympd
+      - icecast
     ports:
       - "80:80"
     restart: always
     privileged: true   
-    
+
   # pureftpd:
   #   build: ./pureftpd
   #   ports:
