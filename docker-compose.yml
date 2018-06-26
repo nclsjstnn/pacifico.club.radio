@@ -38,6 +38,13 @@ services:
     restart: always
     privileged: true    
   
+  proxy:
+    build: ./haproxy
+    depends_on:
+      - icecast
+      - mpd
+    ports:
+      - "80:8080"
   # pureftpd:
   #   build: ./pureftpd
   #   ports:
