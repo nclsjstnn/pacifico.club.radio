@@ -1,3 +1,3 @@
-FROM arm32v6/haproxy:1.8.0-alpine
+FROM resin/raspberrypi3-alpine:3.4
 
 COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
