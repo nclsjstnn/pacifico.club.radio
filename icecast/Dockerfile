@@ -11,7 +11,7 @@ RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends icecast2 \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/log/icecast
+# RUN mkdir -p /var/log/icecast
 # && mkdir -p /usr/share/icecast2 \
 # && chown -R ${user}:${group} /usr/share/icecast2 \
 # && chown -R ${user}:${group} /var/log/icecast
