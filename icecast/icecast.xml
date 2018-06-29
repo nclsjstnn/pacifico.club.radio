@@ -146,9 +146,7 @@
              May be made specific to a port or bound address using the "port"
              and "bind-address" attributes.
           -->
-        <!--
-        <alias source="/foo" destination="/bar"/>
-          -->
+        <alias source="/icecast" destination="/"/>
         <!-- Aliases: can also be used for simple redirections as well,
              this example will redirect all requests for http://server:port/ to
              the status page
