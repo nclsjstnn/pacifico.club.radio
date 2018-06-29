@@ -2,7 +2,7 @@
     <!-- location and admin are two arbitrary strings that are e.g. visible
          on the server info page of the icecast web interface
          (server_version.xsl). -->
-        <location>Santiago de Chile</location>
+    <location>Santiago de Chile</location>
     <admin>hello@radiosativa.co</admin>
 
     <limits>
@@ -153,7 +153,7 @@
              this example will redirect all requests for http://server:port/ to
              the status page
           -->
-        <alias source="/icecast" destination="/status.xsl"/>
+        <alias source="/" destination="/status.xsl"/>
     </paths>
 
     <logging>
