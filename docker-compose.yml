@@ -42,7 +42,6 @@ services:
     build: ./haproxy
     depends_on:
       - ympd
-      - icecast
     ports:
       - "80:80"
     restart: always
@@ -50,7 +49,8 @@ services:
   
   noip-updater:
     image: protenhan/rpi-noip-updater-docker
-    container_name: noip-updater
+    depends_on:
+      - ympd
     restart: always
     environment:
       - 'USERNAME=jstnno'
