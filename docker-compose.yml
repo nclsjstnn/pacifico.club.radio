@@ -48,15 +48,14 @@ services:
     restart: always
     privileged: true
   
-  cloudflare-ddns:
-    image: oznu/cloudflare-ddns:armhf # change 'latest' to 'armhf' or 'aarch64' if running on an arm device
+  noip:
+    image: ulsmith/rpi-noip-updater
+    container_name: noip
     restart: always
     environment:
-      - EMAIL=${CLOUDFLARE_EMAIL}
-      - API_KEY=${CLOUDFLARE_API_KEY}
-      - ZONE=${CLOUDFLARE_ZONE}
-      - SUBDOMAIN=${CLOUDFLARE_SUBDOMAIN}
-      - PROXIED=false
+      - 'USERNAME=jstnno'
+      - 'PASSWORD=2xMVtsEs7w8NA7j5'
+      - 'DOMAIN=radiosativa.servemp3.com'
 
   # pureftpd:
   #   build: ./pureftpd
