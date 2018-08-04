@@ -16,7 +16,4 @@ RUN mkdir -p /var/log/icecast \
     && chown -R ${user}:${group} /usr/share/icecast \
     && chown -R ${user}:${group} /var/log/icecast
 
-#EXPOSE 8000
-
-USER ${user}
 CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
