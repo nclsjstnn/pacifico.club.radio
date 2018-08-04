@@ -48,14 +48,14 @@ services:
     restart: always
     privileged: true
   
-  noip:
-    image: ulsmith/rpi-noip-updater
-    container_name: noip
+  noip-updater:
+    image: protenhan/rpi-noip-updater-docker
+    container_name: noip-updater
     restart: always
     environment:
       - 'USERNAME=jstnno'
       - 'PASSWORD=2xMVtsEs7w8NA7j5'
-      - 'DOMAIN=radiosativa.servemp3.com'
+      - 'HOST=radiosativa.servemp3.com'
 
   # pureftpd:
   #   build: ./pureftpd
