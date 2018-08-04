@@ -46,16 +46,6 @@ services:
       - "80:80"
     restart: always
     privileged: true
-  
-  noip-updater:
-    image: protenhan/rpi-noip-updater-docker
-    depends_on:
-      - ympd
-    restart: always
-    environment:
-      - 'USERNAME=jstnno'
-      - 'PASSWORD=2xMVtsEs7w8NA7j5'
-      - 'HOST=radiosativa.servemp3.com'
 
   # pureftpd:
   #   build: ./pureftpd
