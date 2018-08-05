@@ -10,7 +10,7 @@ COPY silence.ogg /usr/share/icecast/silence.ogg
 COPY icecast.xml /usr/share/icecast/icecast.xml
 
 RUN mkdir -p /var/log/icecast \
-    && chown -R /usr/share/icecast \
-    && chown -R /var/log/icecast
+    && chown -R root /usr/share/icecast \
+    && chown -R root /var/log/icecast
 
 CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
