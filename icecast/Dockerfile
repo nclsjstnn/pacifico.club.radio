@@ -11,10 +11,9 @@ RUN apk -q update \
 
 COPY silence.ogg /usr/share/icecast/silence.ogg
 COPY icecast.xml /usr/share/icecast/icecast.xml
-COPY ./entry_icecast.sh ./
 
 RUN mkdir -p /var/log/icecast \
     && chown -R ${user}:${group} /usr/share/icecast \
     && chown -R ${user}:${group} /var/log/icecast
 
-ENTRYPOINT [ "./entry_icecast.sh" ]
+CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
