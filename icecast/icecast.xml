@@ -174,7 +174,6 @@
         <chroot>0</chroot>
         <changeowner>
             <user>root</user>
-            <group>root</group>
         </changeowner>
     </security>
 </icecast>
