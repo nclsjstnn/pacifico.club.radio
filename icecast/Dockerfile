@@ -13,4 +13,4 @@ RUN mkdir -p /var/log/icecast \
     && chown -R root /usr/share/icecast \
     && chown -R root /var/log/icecast
 
-CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
+CMD ["root", "-c", "/usr/share/icecast/icecast.xml"]
