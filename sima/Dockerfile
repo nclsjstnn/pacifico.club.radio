@@ -5,8 +5,10 @@ ENV INITSYSTEM on
 ENV SIMA_VERSION 0.14.4
 
 RUN apt-get -qq -y update \
-    && apt-get -qq -y install --no-install-recommends python3 curl xz-utils \
+    && apt-get -qq -y install --no-install-recommends python3 python3-pip curl xz-utils \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN sudo pip3 install urllib3
 
 RUN curl -fsSl http://media.kaliko.me/src/sima/releases/MPD_sima-$SIMA_VERSION.tar.xz -o ./sima.tar.xz \
     && tar -xJf ./sima.tar.xz \
