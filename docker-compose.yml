@@ -1,8 +1,6 @@
 version: '2'
 volumes:
-  music:
-  playlists:
-  database:
+  resin-data:
 services:
   icecast:
     build: ./icecast
@@ -16,9 +14,7 @@ services:
     depends_on:
       - icecast
     volumes:
-      - music:/var/lib/mpd/music
-      - playlists:/var/lib/mpd/playlists
-      - database:/var/lib/mpd/database
+      - resin-data:/var/lib/mpd/music
     restart: always
     privileged: true    
 
