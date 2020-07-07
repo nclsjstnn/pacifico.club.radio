@@ -16,9 +16,9 @@ services:
     depends_on:
       - icecast
     volumes:
-      - music:/var/lib/mpd/music
-      - playlists:/var/lib/mpd/playlists
-      - database:/var/lib/mpd/database
+      - 'music:/var/lib/mpd/music'
+      - 'playlists:/var/lib/mpd/playlists'
+      - 'database:/var/lib/mpd/database'
     restart: always
     privileged: true    
 
