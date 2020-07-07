@@ -2,6 +2,9 @@ FROM resin/raspberrypi3-debian:latest
 
 ENV INITSYSTEM on
 
+ARG uid=1000
+ARG gid=1000
+
 RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends wget mpd mpc \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
