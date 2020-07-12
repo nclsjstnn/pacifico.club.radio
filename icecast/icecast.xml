@@ -3,7 +3,7 @@
          on the server info page of the icecast web interface
          (server_version.xsl). -->
     <location>Santiago de Chile</location>
-    <admin>hello@mananarecords.co</admin>
+    <admin>hello@pacifico.club</admin>
 
     <limits>
         <clients>100</clients>
