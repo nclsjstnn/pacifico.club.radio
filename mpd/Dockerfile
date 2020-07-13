@@ -1,9 +1,6 @@
-FROM resin/raspberrypi3-debian:latest
+FROM balenalib/raspberry-pi-debian:latest
 
 ENV INITSYSTEM on
-
-ARG uid=105
-ARG gid=29
 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends wget mpd mpc \

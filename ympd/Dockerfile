@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian:latest
+FROM balenalib/raspberry-pi-debian:latest
 
 ENV INITSYSTEM on
 

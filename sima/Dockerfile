@@ -1,8 +1,8 @@
-FROM resin/raspberrypi3-debian:latest
+FROM balenalib/raspberry-pi-debian:latest
 
 ENV INITSYSTEM on
 
-ENV SIMA_VERSION 0.14.4
+ENV SIMA_VERSION 0.15.3
 
 RUN apt-get -qq -y update \
     && apt-get -qq -y install --no-install-recommends python3 python3-pip curl xz-utils python-urllib3 \

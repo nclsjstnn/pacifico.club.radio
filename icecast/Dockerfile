@@ -1,6 +1,6 @@
-FROM resin/raspberrypi3-alpine:3.4
+FROM balenalib/raspberry-pi-alpine:latest
 
-ENV ICECAST_VERSION 2.4.3-r2
+ENV ICECAST_VERSION 2.4.4-r1
 
 # https://docs.docker.com/engine/reference/builder/#arg
 # docker run -p 8000:8000 --net music_stack --name=icecast -d alpine-icecast:dev
