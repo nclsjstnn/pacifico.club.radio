@@ -1,18 +1,18 @@
-FROM balenalib/raspberry-pi-debian:latest
+FROM balenalib/raspberry-pi-alpine:latest
 
-ENV INITSYSTEM on
+RUN set -x && apk --no-cache add mpd mpc
 
-RUN apt-get -qq -y update \
-    && apt-get -qq -y install --no-install-recommends wget mpd mpc \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir -p /var/lib/mpd/music \
+RUN mkdir -p /var/lib/mpd/conf/ \
+    && mkdir -p /var/lib/mpd/music \
     && mkdir -p /var/lib/mpd/playlists \
-    && mkdir -p /var/lib/mpd/database
+    && mkdir -p /var/lib/mpd/database \
+    && mkdir -p /var/lib/mpd/database/tag_cache \
+    && mkdir -p /var/lib/mpd/database/state
 
-RUN chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
+RUN chown -R mpd:audio /var/lib/mpd && chown -R mpd:audio /var/lib/mpd/database
 
-COPY mpd.conf /etc/mpd.conf
+COPY mpd.conf /var/lib/mpd/conf/mpd.conf
 
-CMD ["mpd", "--stdout", "--no-daemon"]
+VOLUME ["/var/lib/mpd/conf","/var/lib/mpd/music","/var/lib/mpd/playlists","/var/lib/mpd/database"]
 
+ENTRYPOINT ["/usr/bin/mpd", "--no-daemon", "--stdout", "/var/lib/mpd/conf/mpd.conf"]

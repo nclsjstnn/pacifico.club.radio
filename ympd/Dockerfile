@@ -1,7 +1,5 @@
 FROM balenalib/raspberry-pi-debian:latest
 
-ENV INITSYSTEM on
-
 ENV YMPD_VERSION 1.2.3
 
 RUN apt-get -qq -y update \

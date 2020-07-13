@@ -1,6 +1,5 @@
 FROM balenalib/raspberry-pi-debian:latest
 
-ENV INITSYSTEM on
 
 ENV SIMA_VERSION 0.15.3
 

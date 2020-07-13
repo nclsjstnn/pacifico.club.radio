@@ -2,8 +2,6 @@ FROM balenalib/raspberry-pi-alpine:latest
 
 ENV ICECAST_VERSION 2.4.4-r1
 
-# https://docs.docker.com/engine/reference/builder/#arg
-# docker run -p 8000:8000 --net music_stack --name=icecast -d alpine-icecast:dev
 ARG user=icecast
 ARG group=icecast
 ARG uid=1000
@@ -23,4 +21,5 @@ RUN mkdir -p /var/log/icecast \
 EXPOSE 8000
 
 USER ${user}:${group}
+
 CMD ["icecast", "-c", "/usr/share/icecast/icecast.xml"]
