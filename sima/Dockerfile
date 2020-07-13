@@ -1,6 +1,5 @@
 FROM balenalib/raspberry-pi-debian:latest
 
-
 ENV SIMA_VERSION 0.15.3
 
 RUN apt-get -qq -y update \
