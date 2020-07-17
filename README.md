@@ -23,7 +23,7 @@ Este proyecto levanta una radio en un Raspberri Pi 3 usando balena.io para orque
 ```
 cd /var/lib/mpd/music
 
-/usr/local/bin/gdrive download --recursive —skip 1_YUKtv3d2esPk2R_2iUYK1TBkH_Q52vg --access-token ya29.a0AfH6SMBM……
+/usr/local/bin/gdrive download --recursive --skip 1_YUKtv3d2esPk2R_2iUYK1TBkH_Q52vg --access-token ya29.a0AfH6SMBM……
 ```
 
 5. Desde YMPD (http://ympd.8151fa637af0a1247e7e55337f53e140.balena-devices.com) se debe clickear UPDATE DB y luego play a algún tema, así veras los temas desde ympd
