@@ -15,4 +15,4 @@ RUN python3 MPD_sima-$SIMA_VERSION/vinstall.py
 COPY sima.conf /MPD_sima-$SIMA_VERSION/sima.conf
 WORKDIR /MPD_sima-$SIMA_VERSION
 
-CMD ["./vmpd-sima", "-c", "sima.conf"]
+CMD ["./MPD_sima-$SIMA_VERSION/vmpd-sima", "-c", "sima.conf"]
