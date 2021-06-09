@@ -1,6 +1,6 @@
 FROM balenalib/raspberry-pi-alpine:latest
 
-ENV ICECAST_VERSION 2.4.4-r1
+ENV ICECAST_VERSION 2.4.4-r4
 
 ARG user=icecast
 ARG group=icecast
