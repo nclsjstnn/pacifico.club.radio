@@ -2,7 +2,7 @@
 # PACIFICO.CLUB RADIO
 <img src=".img/pacifico.club.jpg" width="100" height="100">
 
-Este proyecto levanta una radio en un Raspberri Pi 3 usando balena.io para orquestrar 5 servicios en un docker-compose.
+Este proyecto levanta una radio en un Raspberri Pi usando balena.io para orquestrar 5 servicios en un docker-compose.
 - icecast (el que hace el stream) https://icecast.org/
 - mpd (el que toca las canciones) https://wiki.archlinux.org/index.php/Music_Player_Daemon
 - proxy (el balanceador que sale por el puerto 80) http://www.haproxy.org/
@@ -20,12 +20,7 @@ Este proyecto levanta una radio en un Raspberri Pi 3 usando balena.io para orque
 3. Con el token ya puedes acceder al dashboard de balena y seleccionar el unico device bajo la app pacifico-club, deberas buscar el terminal al costado inferior derecho y seleccionar mpd para abrir sesion
 ![alt text](.img/2772c823-ff92-4cb4-be99-7505b0c62fe0.png)
 
-4. Para pasar música desde el drive debes navegar a la carpeta donde lee la música el MPD, y luego debes correr estos comandos remplazando el access token
-```
-cd /var/lib/mpd/music
-
-./gdrive download --recursive --skip 1_YUKtv3d2esPk2R_2iUYK1TBkH_Q52vg --access-token ya29.a0AfH6SMBM……
-```
+4. Agrega música al dispositivo
 
 5. Desde YMPD (http://ympd.8151fa637af0a1247e7e55337f53e140.balena-devices.com) se debe clickear UPDATE DB y luego play a algún tema, así veras los temas desde ympd
 ![alt text](.img/628186e7-346f-4c83-b4a5-e27a850d038a.png)
@@ -46,11 +41,12 @@ darles los permisos necesarios
 ```
 chmod g+w /var/lib/mpd/music /var/lib/mpd/playlists /var/lib/mpd/database
 ```
-descargar catalogo usando gdrive
+pasar música desde google drive al dispositivo
 ```
-./gdrive download --recursive —skip 1_YUKtv3d2esPk2R_2iUYK1TBkH_Q52vg --access-token ya29.a0AfH6SMBMNiqjtIKpwylJURALc5d06VJqM-hABxQIANFDpV6_4qgReE0-6LblT44Wlz5-nuEVN42AOT-fFAPmgFho4ZrGWZkpUF0A_r4boDk6d-SDSH2dAlGlwhVt1Pu7UgrY8aTgKB4befiC9NElIwwTB7KUMUT-6mM
+cd /var/lib/mpd/music
+./gdrive download --recursive —skip {DRIVE_FOLDER_ID} --access-token {DRIVE_API_TOKEN}
 ````
 
 ## Creditos
-Este proyecto es mantenido por Nicolas Justiniano (n.justiniano@gmail.com) y Pablo Rubio (myuhlz@gmail.com)
+Este proyecto es mantenido por Nicolas Justiniano y Pablo Rubio
 

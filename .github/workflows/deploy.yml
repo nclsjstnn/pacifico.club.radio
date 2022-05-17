@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    # Only run workflow for pushes to specific branches
+    branches:
+      - master
+
+jobs:
+  balena_cloud_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: balena-io/deploy-to-balena-action@master
+        id: build
+        with:
+          balena_token: ${{secrets.BALENA_API_TOKEN}}
+          fleet: ${{secrets.BALENA_APPLICATION_NAME}}
+      - name: Log release ID built
+        run: echo "Built release ID ${{ steps.build.outputs.release_id }}"
+
+# name: CI
+# on:
+#   push:
+#     # Only run workflow for pushes to specific branches
+#     branches:
+#       - master
+# jobs:
+#   balena-push:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#         with:
+#           submodules: recursive
+#       - uses: actions/setup-node@v1.1.0
+#       - uses: theaccordance/balena-push@v1.0.0
+#         with:
+#           api-token: ${{secrets.BALENA_API_TOKEN}}
+#           application-name: ${{secrets.BALENA_APPLICATION_NAME}}
+#           application-path: "."
