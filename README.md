@@ -7,7 +7,7 @@ Este proyecto levanta una radio en un Raspberri Pi usando balena.io para orquest
 - mpd (el que toca las canciones) https://wiki.archlinux.org/index.php/Music_Player_Daemon
 - proxy (el balanceador que sale por el puerto 80) http://www.haproxy.org/
 - sima (el dj) https://kaliko.me/mpd-sima/
-- ympd (la intefaz visual) https://www.ympd.org/
+- ympd (la intefaz visual) https://ympd.org/
 
 ## Que hacer si quiero pasar música a Pacifico.club
 0. Ingresar a https://console.cloud.google.com/apis/library/drive.googleapis.com y verificar si esta habilitada el app de google drive. Puede ser necesario que crees una cuenta y un proyecto en google cloud.
